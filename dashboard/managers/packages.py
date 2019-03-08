@@ -330,7 +330,9 @@ class PackagesManager(InventoryManager):
                         package_details.platform_slug_id,
                         pkg_stats_version.stats_raw_json, list(lang_id_name)
                     )
-                if 'test' not in pkg_stats_version.project_version and 'extras' not in pkg_stats_version.project_version:
+                if 'test' not in pkg_stats_version.project_version \
+                        and 'extras' not in pkg_stats_version.project_version \
+                        and not trans_stats_dict.get(pkg_stats_version.project_version):
                     trans_stats_dict[pkg_stats_version.project_version] = \
                         self.syncstats_manager.extract_locale_translated(package_details.platform_slug_id,
                                                                          trans_stats_list)
